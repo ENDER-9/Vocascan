@@ -125,9 +125,11 @@ const Query = () => {
     if (!vocabs) {
       return;
     }
-    setTimeout(() => {
-      setCurrVocab(vocabs[0]);
-    }, 260);
+    let timer1 = setTimeout(() => setCurrVocab(vocabs[0]), 260);
+
+    return () => {
+      clearTimeout(timer1);
+    };
   }, [vocabs]);
 
   useEffect(() => {
