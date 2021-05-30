@@ -15,11 +15,13 @@ const TextInput = ({
   value = "",
   autoFocus = false,
   showTogglePassword = true,
+  maxLength,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
   const [flow, setFlow] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [indicator, setIndicator] = useState(false);
 
   const handleFocus = useCallback(() => {
     setFocused(true);
@@ -37,6 +39,10 @@ const TextInput = ({
     // only trigger once the component renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setIndicator(maxLength - value.length);
+  }, [maxLength, value]);
 
   useEffect(() => {
     setFlow(!!value || focused);
@@ -61,6 +67,7 @@ const TextInput = ({
         onBlur={onBlur}
         onFocus={handleFocus}
         autoFocus={autoFocus}
+        maxLength={maxLength}
         {...props}
       />
       {type === "password" && showTogglePassword && (
@@ -72,6 +79,9 @@ const TextInput = ({
         >
           {typeState === "text" ? <VisibilityIcon /> : <VisibilityOffIcon />}
         </span>
+      )}
+      {!error && maxLength && (indicator / maxLength) * 100 <= 30 && (
+        <p className="text-input-indicator">{`${indicator}/${maxLength}`}</p>
       )}
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>

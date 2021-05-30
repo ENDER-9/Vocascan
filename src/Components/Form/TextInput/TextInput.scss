@@ -77,6 +77,14 @@
     bottom: -13px;
   }
 
+  .text-input-indicator {
+    position: absolute;
+    text-align: left;
+    font-size: 11px;
+    color: $color-primary-dark;
+    bottom: -13px;
+  }
+
   .show-password {
     position: absolute;
     color: $color-primary-light;
