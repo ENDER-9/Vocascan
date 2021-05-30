@@ -95,11 +95,10 @@ const Query = () => {
       if (answer) {
         setVocabs(vocabs.slice(1));
       }
-      // if answer is wrong put vocabs card to the end of the query
+      // if answer is wrong put vocab card to the end of the query
       else {
         setVocabs([...vocabs.slice(1), vocabs[0]]);
       }
-      setCurrVocab(vocabs[0]);
     },
     [
       correctVocabs,
@@ -126,8 +125,9 @@ const Query = () => {
     if (!vocabs) {
       return;
     }
-
-    setCurrVocab(vocabs[0]);
+    setTimeout(() => {
+      setCurrVocab(vocabs[0]);
+    }, 260);
   }, [vocabs]);
 
   useEffect(() => {
