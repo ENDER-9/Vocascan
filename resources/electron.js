@@ -21,6 +21,7 @@ log.transports.file.level = "debug";
 autoUpdater.logger = log;
 autoUpdater.autoDownload = false;
 autoUpdater.allowDowngrade = true; // just in case we want to revert a build
+const gotTheLock = app.requestSingleInstanceLock();
 
 i18n.use(i18nBackend);
 
@@ -228,22 +229,46 @@ const cancelSkipUpdate = () => {
   }
 };
 
-app.on("ready", async () => {
-  await localize();
+if (!gotTheLock) {
+  app.quit();
+} else {
+  app.on("second-instance", (event, commandLine, workingDirectory) => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (windows.main) {
+      if (windows.main.isMinimized()) windows.main.restore();
+      windows.main.focus();
+    }
+  });
 
-  createWindow();
+  app.on("ready", async () => {
+    await localize();
 
-  if (isDev) {
-    windows.main.show();
-  }
+    createWindow();
 
-  // check for updates interval
-  if (!isDev) {
-    timerIds.checkForUpdates = setInterval(() => {
-      autoUpdater.checkForUpdates();
-    }, TIMES.checkUpdate);
-  }
-});
+    if (isDev) {
+      windows.main.show();
+    }
+
+    // check for updates interval
+    if (!isDev) {
+      timerIds.checkForUpdates = setInterval(() => {
+        autoUpdater.checkForUpdates();
+      }, TIMES.checkUpdate);
+    }
+  });
+
+  app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+      app.quit();
+    }
+  });
+
+  app.on("activate", () => {
+    if (windows.main === null) {
+      createWindow();
+    }
+  });
+}
 
 ipcMain.on("start-update", () => {
   if (updateAvailable && !isDev) {
@@ -253,18 +278,6 @@ ipcMain.on("start-update", () => {
 
 ipcMain.on("skip-check", () => {
   skipUpdateCheck();
-});
-
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (windows.main === null) {
-    createWindow();
-  }
 });
 
 autoUpdater.on("checking-for-update", () => {
