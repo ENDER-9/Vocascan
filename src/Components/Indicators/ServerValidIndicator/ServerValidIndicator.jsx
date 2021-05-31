@@ -69,7 +69,7 @@ const ServerValidIndicator = ({ setValid }) => {
     };
   }, []);
 
-  if (isLoading) {
+  if (isLoading && serverAddress !== "") {
     return <LoadingIndicator position="center" />;
   }
 
@@ -100,7 +100,7 @@ const ServerValidIndicator = ({ setValid }) => {
         </p>
       )}
 
-      {isServerResponding === false && (
+      {isServerResponding === false && serverAddress !== "" && (
         <p className="error">
           {t("components.validServerIndicator.serverNotResponding")}
         </p>
