@@ -13,6 +13,7 @@ import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, register } from "../../redux/Actions/login.js";
 import { register as registerAPI, getLanguages } from "../../utils/api.js";
+import { maxTextareaLength, maxNameLength } from "../../utils/constants.js";
 
 import "./Register.scss";
 
@@ -190,6 +191,7 @@ const Register = ({ image }) => {
               value={username}
               error={usernameIsUsed}
               errorText={t("screens.register.usernameInUse")}
+              max={maxNameLength}
             />
             <TextInput
               required
@@ -203,6 +205,7 @@ const Register = ({ image }) => {
               value={email}
               error={emailIsUsed}
               errorText={t("screens.register.emailInUse")}
+              max={maxTextareaLength}
             />
             <TextInput
               required
@@ -216,6 +219,7 @@ const Register = ({ image }) => {
               value={password}
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
+              max={maxTextareaLength}
             />
             <TextInput
               required
@@ -229,6 +233,7 @@ const Register = ({ image }) => {
               value={passwordRepeat}
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
+              max={maxTextareaLength}
             />
             {selfHosted && (
               <TextInput
@@ -239,6 +244,7 @@ const Register = ({ image }) => {
                   setServerAddressInput(value);
                 }}
                 value={serverAddressInput}
+                max={maxTextareaLength}
               />
             )}
             {serverError ? (

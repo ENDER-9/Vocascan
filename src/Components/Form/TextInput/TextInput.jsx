@@ -15,7 +15,8 @@ const TextInput = ({
   value = "",
   autoFocus = false,
   showTogglePassword = true,
-  maxLength,
+  max = 255,
+  min = 1,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
@@ -41,8 +42,8 @@ const TextInput = ({
   }, []);
 
   useEffect(() => {
-    setIndicator(maxLength - value.length);
-  }, [maxLength, value]);
+    setIndicator(max - value.length);
+  }, [max, value]);
 
   useEffect(() => {
     setFlow(!!value || focused);
@@ -67,7 +68,9 @@ const TextInput = ({
         onBlur={onBlur}
         onFocus={handleFocus}
         autoFocus={autoFocus}
-        maxLength={maxLength}
+        maxLength={max}
+        max={max}
+        min={min}
         {...props}
       />
       {type === "password" && showTogglePassword && (
@@ -80,9 +83,12 @@ const TextInput = ({
           {typeState === "text" ? <VisibilityIcon /> : <VisibilityOffIcon />}
         </span>
       )}
-      {!error && maxLength && (indicator / maxLength) * 100 <= 30 && (
-        <p className="text-input-indicator">{`${indicator}/${maxLength}`}</p>
-      )}
+      {!error &&
+        typeState !== "number" &&
+        max &&
+        (indicator / max) * 100 <= 30 && (
+          <p className="text-input-indicator">{`${indicator}/${max}`}</p>
+        )}
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>
   );

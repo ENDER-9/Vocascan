@@ -13,7 +13,7 @@ import Textarea from "../../Components/Form/Textarea/Textarea.jsx";
 import useSnack from "../../hooks/useSnack.js";
 import { setGroupActive } from "../../redux/Actions/form.js";
 import { getPackages, createGroup, modifyGroup } from "../../utils/api.js";
-import { maxTextareaLength } from "../../utils/constants.js";
+import { maxTextareaLength, maxNameLength } from "../../utils/constants.js";
 
 import "./GroupForm.scss";
 
@@ -172,6 +172,7 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
+          max={maxNameLength}
         />
         <Textarea
           placeholder={t("screens.allGroups.groupDescription")}
