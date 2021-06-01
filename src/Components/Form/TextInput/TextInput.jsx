@@ -15,8 +15,9 @@ const TextInput = ({
   value = "",
   autoFocus = false,
   showTogglePassword = true,
-  max = 255,
-  min = 1,
+  maxLength = null,
+  max = null,
+  min = null,
   ...props
 }) => {
   const [typeState, setTypeState] = useState(type);
@@ -34,6 +35,23 @@ const TextInput = ({
     setFlow(!!value);
   }, [value]);
 
+  const onInputChange = useCallback(
+    (input) => {
+      if (type !== "number") {
+        return onChange(input);
+      } else {
+        if (input > max) {
+          return onChange(max);
+        } else if (input < min) {
+          return onChange(min);
+        } else {
+          return onChange(input);
+        }
+      }
+    },
+    [max, min, onChange, type]
+  );
+
   useEffect(() => {
     setFlow(!!value || autoFocus);
     setFocused(autoFocus);
@@ -42,8 +60,8 @@ const TextInput = ({
   }, []);
 
   useEffect(() => {
-    setIndicator(max - value.length);
-  }, [max, value]);
+    setIndicator(maxLength - value.length);
+  }, [maxLength, type, value]);
 
   useEffect(() => {
     setFlow(!!value || focused);
@@ -62,13 +80,13 @@ const TextInput = ({
         className={`text-input ${error && "input-error"}`}
         type={typeState}
         placeholder=""
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onInputChange(e.target.value)}
         required={required}
         value={value}
         onBlur={onBlur}
         onFocus={handleFocus}
         autoFocus={autoFocus}
-        maxLength={max}
+        maxLength={maxLength}
         max={max}
         min={min}
         {...props}
@@ -85,9 +103,9 @@ const TextInput = ({
       )}
       {!error &&
         typeState !== "number" &&
-        max &&
-        (indicator / max) * 100 <= 30 && (
-          <p className="text-input-indicator">{`${indicator}/${max}`}</p>
+        maxLength &&
+        (indicator / maxLength) * 100 <= 30 && (
+          <p className="text-input-indicator">{`${indicator}/${maxLength}`}</p>
         )}
       {error && errorText && <p className="text-input-error">{errorText}</p>}
     </div>

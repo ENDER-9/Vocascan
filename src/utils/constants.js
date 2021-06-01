@@ -7,9 +7,13 @@ export const defaultLimit = 100;
 export const minServerVersion = "0.1.0";
 
 export const maxTextareaLength = 255;
+export const maxUsernameLength = 32;
 export const maxNameLength = 55;
+export const maxTextfieldLength = 255;
 export const maxDescriptionLength = 255;
 export const maxRightVocabs = 10;
+export const maxNumberField = 255;
+export const minNumberField = 1;
 
 export const contributors = {
   desktop: [

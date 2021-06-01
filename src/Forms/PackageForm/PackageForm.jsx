@@ -11,9 +11,10 @@ import TextInput from "../../Components/Form/TextInput/TextInput.jsx";
 import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
 import {
-  maxTextareaLength,
   maxNameLength,
   maxRightVocabs,
+  maxNumberField,
+  minNumberField,
 } from "../../utils/constants.js";
 import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
@@ -183,7 +184,7 @@ const PackageForm = ({
             setName(value);
           }}
           value={name}
-          max={maxNameLength}
+          maxLength={maxNameLength}
         />
 
         <div className="dropdown">
@@ -196,7 +197,6 @@ const PackageForm = ({
                 setForeignLanguage(value);
               }}
               value={foreignLanguage}
-              max={maxTextareaLength}
             />
           </div>
           <div className="select-wrapper">
@@ -208,7 +208,6 @@ const PackageForm = ({
                 setTranslatedLanguage(value);
               }}
               value={translatedLanguage}
-              max={maxTextareaLength}
             />
           </div>
         </div>
@@ -221,7 +220,8 @@ const PackageForm = ({
           }}
           value={vocabsPerDay}
           type="number"
-          max={maxTextareaLength}
+          max={maxNumberField}
+          min={minNumberField}
         />
 
         <TextInput
@@ -233,6 +233,7 @@ const PackageForm = ({
           value={rightTranslations}
           type="number"
           max={maxRightVocabs}
+          min={minNumberField}
         />
       </div>
 

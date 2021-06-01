@@ -21,7 +21,10 @@ import {
   createVocabulary,
   modifyVocabulary,
 } from "../../utils/api.js";
-import { maxTextareaLength } from "../../utils/constants.js";
+import {
+  maxTextareaLength,
+  maxTextfieldLength,
+} from "../../utils/constants.js";
 import { maxTranslations } from "../../utils/constants.js";
 
 import "./VocabForm.scss";
@@ -363,7 +366,7 @@ const VocabForm = ({
             setForeignWord(value);
           }}
           value={foreignWord}
-          max={maxTextareaLength}
+          maxLength={maxTextfieldLength}
         />
         <ArrayTextInput
           required
@@ -372,6 +375,7 @@ const VocabForm = ({
           placeholder={t("global.translation")}
           onChange={setTranslations}
           addText={t("components.vocabForm.addTranslation")}
+          maxLength={maxTextfieldLength}
         />
         <Textarea
           tabIndex={1}

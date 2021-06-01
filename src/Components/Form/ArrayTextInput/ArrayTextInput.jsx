@@ -16,6 +16,7 @@ const ArrayTextInput = ({
   placeholder = null,
   addText = null,
   required = false,
+  maxLength = null,
 }) => {
   const [arrayData, setArrayData] = useState(() => {
     if (!data || !data.length) {
@@ -90,6 +91,7 @@ const ArrayTextInput = ({
                 });
               }}
               value={elem.value}
+              maxLength={maxLength}
             />
             <Button
               tabIndex={-1}

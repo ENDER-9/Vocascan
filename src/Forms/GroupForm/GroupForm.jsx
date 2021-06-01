@@ -172,7 +172,7 @@ const GroupForm = ({
             setName(value);
           }}
           value={name}
-          max={maxNameLength}
+          maxLength={maxNameLength}
         />
         <Textarea
           placeholder={t("screens.allGroups.groupDescription")}
