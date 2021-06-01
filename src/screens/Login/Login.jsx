@@ -13,10 +13,7 @@ import UnauthenticatedLayout from "../../Components/Layout/UnauthenticatedLayout
 import { setLanguages } from "../../redux/Actions/language.js";
 import { setServerUrl, signIn } from "../../redux/Actions/login.js";
 import { login, getLanguages } from "../../utils/api.js";
-import {
-  maxTextareaLength,
-  maxTextfieldLength,
-} from "../../utils/constants.js";
+import { maxTextfieldLength } from "../../utils/constants.js";
 
 import "./Login.scss";
 
