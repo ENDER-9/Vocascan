@@ -72,6 +72,8 @@ const createWindow = () => {
   windows.main = new BrowserWindow({
     width: 1440,
     height: 900,
+    minWidth: 950,
+    minHeight: 650,
     icon: path.join(__dirname, "../src/images/logo/vocascan-round-linux.png"),
     webPreferences: {
       nodeIntegration: true,
