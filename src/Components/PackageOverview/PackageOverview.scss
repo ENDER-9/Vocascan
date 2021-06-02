@@ -23,8 +23,13 @@
     margin-left: 15px;
 
     &.package-heading {
+      width: 85%;
       grid-area: heading;
+      text-align: left;
       font-size: 25px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &.package-unresolved {
