@@ -69,6 +69,7 @@
 
   .foreign-word-wrapper {
     overflow-wrap: break-word;
+
     h1 {
       width: 100%;
     }
@@ -78,16 +79,17 @@
     overflow-wrap: break-word;
 
     .translations {
-    width: 100%;
-    border: 1px solid $color-primary;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 24px; 
-  }
+      width: 100%;
+      border: 1px solid $color-primary;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 24px; 
+    }
+
     .my-20 {
-    margin: 20px 0;
-    width: 100%;
-  }
+      margin: 20px 0;
+      width: 100%;
+    }
   }
 
 
