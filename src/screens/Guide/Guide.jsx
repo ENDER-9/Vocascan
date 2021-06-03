@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 import Button from "../../Components/Button/Button.jsx";
 import { SelectOptionWithFlag } from "../../Components/Form/Select/Select.jsx";
@@ -24,6 +25,7 @@ const Guide = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { showSnack } = useSnack();
+  const history = useHistory();
 
   const isFirstLogin = useSelector((state) => state.login.firstLogin);
   const [show, setShow] = useState(false);
@@ -58,8 +60,8 @@ const Guide = () => {
     dispatch(closeGuide());
 
     //reload windows in order to show up created package
-    window.location.href = "/";
-  }, [dispatch]);
+    history.replace("/");
+  }, [dispatch, history]);
 
   const packageAdded = useCallback(
     (newPackage) => {
