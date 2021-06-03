@@ -79,7 +79,6 @@
     overflow-wrap: break-word;
 
     .translations {
-      width: 100%;
       border: 1px solid $color-primary;
       border-radius: 10px;
       padding: 10px;
@@ -87,8 +86,9 @@
     }
 
     .my-20 {
+      max-width: 100%;
       margin: 20px 0;
-      width: 100%;
+
     }
   }
 
