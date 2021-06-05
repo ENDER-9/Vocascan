@@ -223,6 +223,7 @@ const Register = ({ image }) => {
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
+              minLength={8}
             />
             <TextInput
               required
@@ -237,6 +238,7 @@ const Register = ({ image }) => {
               error={!isSamePassword}
               errorText={t("screens.register.passwordsDontMatch")}
               maxLength={maxTextfieldLength}
+              minLength={8}
             />
             {selfHosted && (
               <TextInput

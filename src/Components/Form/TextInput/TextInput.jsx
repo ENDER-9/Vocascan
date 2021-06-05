@@ -16,6 +16,7 @@ const TextInput = ({
   autoFocus = false,
   showTogglePassword = true,
   maxLength = null,
+  minLength = null,
   max = null,
   min = null,
   ...props
@@ -87,6 +88,7 @@ const TextInput = ({
         onFocus={handleFocus}
         autoFocus={autoFocus}
         maxLength={maxLength}
+        minLength={minLength}
         max={max}
         min={min}
         {...props}
