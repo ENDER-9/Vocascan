@@ -30,6 +30,7 @@ const VocabCard = ({
   onCheck,
   currDirection = "default",
   flip = false,
+  disabled = false,
 }) => {
   const { t } = useTranslation();
 
@@ -56,6 +57,7 @@ const VocabCard = ({
               <Button
                 className="card-button"
                 appearance="red"
+                disabled={disabled}
                 onClick={() => {
                   sendVocabCheck(currVocab.id, false, true);
                 }}
@@ -65,6 +67,7 @@ const VocabCard = ({
               <Button
                 className="card-button"
                 appearance="green"
+                disabled={disabled}
                 onClick={() => {
                   sendVocabCheck(currVocab.id, true, true);
                 }}

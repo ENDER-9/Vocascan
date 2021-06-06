@@ -37,6 +37,7 @@ const Query = () => {
   const [flip, setFlip] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [currDirection, setCurrDirection] = useState(direction);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const getVocabulary = useCallback(() => {
     getQueryVocabulary(languagePackageId, staged, limit)
@@ -70,6 +71,9 @@ const Query = () => {
 
         showSnack("error", "Internal Server Error");
       });
+
+      setButtonDisabled(true);
+      setTimeout(() => setButtonDisabled(false), 260);
 
       if (direction === "random") {
         setCurrDirection(
@@ -158,6 +162,7 @@ const Query = () => {
             currVocab={currVocab}
             sendVocabCheck={sendVocabCheck}
             onCheck={onCheck}
+            disabled={buttonDisabled}
             currDirection={currDirection}
             flip={flip}
           />
