@@ -231,7 +231,7 @@ const cancelSkipUpdate = () => {
   }
 };
 
-if (!gotTheLock) {
+if (!gotTheLock && !isDev) {
   app.quit();
 } else {
   app.on("second-instance", (event, commandLine, workingDirectory) => {
