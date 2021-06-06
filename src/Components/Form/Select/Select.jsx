@@ -13,7 +13,7 @@ export const SelectOptionWithFlag = ({
 }) => {
   return (
     <span className="custom-option-wrapper">
-      {name}
+      <p className="custom-option-wrapper-name">{name}</p>
       <small className="postfix">
         {foreignLanguageCode && (
           <Flag languageCode={foreignLanguageCode} size="small" border />

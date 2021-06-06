@@ -150,6 +150,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
+  .custom-option-wrapper-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .postfix {
     font-size: 20px;
