@@ -241,7 +241,7 @@ const PackageForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} type="submit">
+      <Button disabled={!canSubmit} onClick={submitHandler}>
         {t("global.submit")}
       </Button>
     </form>

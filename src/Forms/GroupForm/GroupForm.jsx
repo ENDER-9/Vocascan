@@ -54,6 +54,10 @@ const GroupForm = ({
   }, [showSnack, t]);
 
   const submitHandler = useCallback(async () => {
+    if (!canSubmit) {
+      return;
+    }
+
     const newGroup = {
       name,
       description,
@@ -96,6 +100,7 @@ const GroupForm = ({
         }
       });
   }, [
+    canSubmit,
     defaultData?.id,
     description,
     dispatch,
@@ -148,7 +153,7 @@ const GroupForm = ({
   }, []);
 
   return (
-    <div className="group-form">
+    <form className="group-form" onSubmit={submitHandler}>
       <div className="form-wrapper">
         <div className="dropdown">
           <div className="select-wrapper">
@@ -194,7 +199,7 @@ const GroupForm = ({
       <Button disabled={!canSubmit} onClick={submitHandler}>
         {t("global.submit")}
       </Button>
-    </div>
+    </form>
   );
 };
 

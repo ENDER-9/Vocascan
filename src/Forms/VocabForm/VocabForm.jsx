@@ -149,17 +149,6 @@ const VocabForm = ({
   );
 
   const onSubmit = useCallback(() => {
-    if (
-      !(
-        foreignWord &&
-        translations?.length &&
-        selectedGroup &&
-        selectedPackage &&
-        canSave
-      )
-    ) {
-      return;
-    }
     const submitTranslations = translations.map((elem) => {
       return {
         name: elem,
@@ -208,13 +197,13 @@ const VocabForm = ({
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
   }, [
-    translations,
     foreignWord,
+    translations,
+    selectedGroup,
+    selectedPackage,
     localActive,
     description,
     defaultData?.id,
-    selectedPackage?.value,
-    selectedGroup?.value,
     localActivate,
     onClear,
     showSnack,
@@ -329,7 +318,7 @@ const VocabForm = ({
   }, [onLoad]);
 
   return (
-    <form className="vocab-form" onSubmit={onSubmit}>
+    <div className="vocab-form">
       {title && <h1 className="heading">{title}</h1>}
 
       <div className="dropdowns">
@@ -420,7 +409,7 @@ const VocabForm = ({
         <Button
           block
           tabIndex={-1}
-          type="submit"
+          onClick={onSubmit}
           disabled={
             !(
               foreignWord &&
@@ -448,7 +437,7 @@ const VocabForm = ({
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </form>
+    </div>
   );
 };
 
