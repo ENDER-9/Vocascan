@@ -12,9 +12,8 @@ import useSnack from "../../hooks/useSnack.js";
 import { createPackage, modifyPackage } from "../../utils/api.js";
 import {
   maxNameLength,
-  maxRightVocabs,
-  maxNumberField,
-  minNumberField,
+  rightVocabs,
+  numberField,
 } from "../../utils/constants.js";
 import { findLanguageByCode, getLanguageString } from "../../utils/index.js";
 
@@ -225,8 +224,8 @@ const PackageForm = ({
           }}
           value={vocabsPerDay}
           type="number"
-          max={maxNumberField}
-          min={minNumberField}
+          max={numberField[1]}
+          min={numberField[0]}
         />
 
         <TextInput
@@ -237,8 +236,8 @@ const PackageForm = ({
           }}
           value={rightTranslations}
           type="number"
-          max={maxRightVocabs}
-          min={minNumberField}
+          max={rightVocabs[1]}
+          min={rightVocabs[0]}
         />
       </div>
 
