@@ -130,14 +130,16 @@ const AllGroups = () => {
         Header: t("screens.allGroups.groupDescription"),
         accessor: "description",
         Cell: ({ row }) => (
-          <p
-            className="group-description-cell"
-            data-tip={row.original.description}
-            data-for={`description-tooltip-${row.original.id}`}
-          >
-            {row.original.description}
+          <>
+            <p
+              className="group-description-cell"
+              data-tip={row.original.description}
+              data-for={`description-tooltip-${row.original.id}`}
+            >
+              {row.original.description}
+            </p>
             <Tooltip id={`description-tooltip-${row.original.id}`} />
-          </p>
+          </>
         ),
         headerClassName: "w-50",
       },
