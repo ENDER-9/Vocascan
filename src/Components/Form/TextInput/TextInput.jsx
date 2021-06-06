@@ -38,19 +38,13 @@ const TextInput = ({
 
   const onInputChange = useCallback(
     (input) => {
-      if (type !== "number") {
-        return onChange(input);
-      } else {
-        if (input > max) {
-          return onChange(max);
-        } else if (input < min) {
-          return onChange(min);
-        } else {
-          return onChange(input);
-        }
+      if (type === "number" && input > max) {
+        return onChange(max);
       }
+
+      return onChange(input);
     },
-    [max, min, onChange, type]
+    [max, onChange, type]
   );
 
   useEffect(() => {

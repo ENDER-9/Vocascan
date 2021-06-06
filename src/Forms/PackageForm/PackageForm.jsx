@@ -77,6 +77,10 @@ const PackageForm = ({
 
   //make api call to add vocab package
   const submitHandler = useCallback(async () => {
+    if (!canSubmit) {
+      return;
+    }
+
     const packageToSave = {
       name: name,
       foreignWordLanguage: foreignLanguage.code,
@@ -124,6 +128,7 @@ const PackageForm = ({
         showSnack("error", t("components.packageForm.savePackageFailMessage"));
       });
   }, [
+    canSubmit,
     defaultData?.id,
     foreignLanguage.code,
     name,
@@ -175,7 +180,7 @@ const PackageForm = ({
   }, [onLoad]);
 
   return (
-    <div className="language-package-form">
+    <form className="language-package-form" onSubmit={submitHandler}>
       <div className="form-wrapper">
         <TextInput
           required
@@ -237,10 +242,10 @@ const PackageForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} onClick={submitHandler}>
+      <Button disabled={!canSubmit} type="submit">
         {t("global.submit")}
       </Button>
-    </div>
+    </form>
   );
 };
 
