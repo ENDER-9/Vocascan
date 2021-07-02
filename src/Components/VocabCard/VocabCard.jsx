@@ -1,11 +1,15 @@
 import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 import Button from "../Button/Button.jsx";
 
 import "./VocabCard.scss";
 
 const RenderForeignWord = ({ currVocab, isTranslation }) => {
+  const foreignWordLanguage = useSelector(
+    (state) => state.query.foreignWordLanguage
+  );
   return (
     <div className="foreign-word-wrapper">
       {isTranslation ? (
@@ -14,17 +18,22 @@ const RenderForeignWord = ({ currVocab, isTranslation }) => {
       <h1 className={`${isTranslation ? "translations" : ""}`}>
         {currVocab.name}
       </h1>
+      <p className="language-indicator">{foreignWordLanguage}</p>
     </div>
   );
 };
 
 const RenderTranslatedWord = ({ currVocab, isTranslation }) => {
+  const translatedWordLanguage = useSelector(
+    (state) => state.query.translatedWordLanguage
+  );
   return (
     <div className="translated-word-wrapper">
       {isTranslation ? <p className="my-20">{currVocab.description}</p> : null}
       <div className={`my-20 ${isTranslation ? "translations" : ""}`}>
         {currVocab.Translations.map((el) => el.name).join(", ")}
       </div>
+      <p className="language-indicator">{translatedWordLanguage}</p>
     </div>
   );
 };
