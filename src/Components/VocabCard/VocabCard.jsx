@@ -5,19 +5,24 @@ import Button from "../Button/Button.jsx";
 
 import "./VocabCard.scss";
 
-const RenderForeignWord = ({ currVocab }) => {
+const RenderForeignWord = ({ currVocab, isTranslation }) => {
   return (
     <div className="foreign-word-wrapper">
-      <h1>{currVocab.name}</h1>
+      {isTranslation ? (
+        <p className="description">{currVocab.description}</p>
+      ) : null}
+      <h1 className={`${isTranslation ? "translations" : ""}`}>
+        {currVocab.name}
+      </h1>
     </div>
   );
 };
 
-const RenderTranslatedWord = ({ currVocab }) => {
+const RenderTranslatedWord = ({ currVocab, isTranslation }) => {
   return (
     <div className="translated-word-wrapper">
-      <p className="my-20">{currVocab.description}</p>
-      <div className="my-20 translations">
+      {isTranslation ? <p className="my-20">{currVocab.description}</p> : null}
+      <div className={`my-20 ${isTranslation ? "translations" : ""}`}>
         {currVocab.Translations.map((el) => el.name).join(", ")}
       </div>
     </div>
@@ -48,18 +53,24 @@ const VocabCard = ({
         <div className="card-front" onClick={onFlipHandler}>
           <div className="card-front-inner">
             {currDirection === "default" ? (
-              <RenderForeignWord currVocab={currVocab} />
+              <RenderForeignWord currVocab={currVocab} isTranslation={false} />
             ) : (
-              <RenderTranslatedWord currVocab={currVocab} />
+              <RenderTranslatedWord
+                currVocab={currVocab}
+                isTranslation={false}
+              />
             )}
           </div>
         </div>
         <div className="card-back" onClick={onFlipHandler}>
           <div className="card-back-inner">
             {currDirection === "default" ? (
-              <RenderTranslatedWord currVocab={currVocab} />
+              <RenderTranslatedWord
+                currVocab={currVocab}
+                isTranslation={true}
+              />
             ) : (
-              <RenderForeignWord currVocab={currVocab} />
+              <RenderForeignWord currVocab={currVocab} isTranslation={true} />
             )}
             <div className="continue">
               <Button
