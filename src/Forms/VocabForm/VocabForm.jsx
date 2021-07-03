@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,6 +42,7 @@ const VocabForm = ({
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const dispatch = useDispatch();
+  const focusedInputField = useRef();
 
   const active = useSelector((state) => state.form.vocab.active);
   const activate = useSelector((state) => state.form.vocab.activate);
@@ -196,6 +197,7 @@ const VocabForm = ({
       .catch((e) => {
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
+    focusedInputField.current.focus();
   }, [
     translations,
     foreignWord,
@@ -361,6 +363,7 @@ const VocabForm = ({
         <div className="input-fields">
           <TextInput
             required
+            inputRef={focusedInputField}
             tabIndex={1}
             placeholder={t("global.foreignWord")}
             onChange={(value) => {

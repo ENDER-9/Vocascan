@@ -7,6 +7,7 @@ import "./TextInput.scss";
 
 const TextInput = ({
   type = "text",
+  inputRef = null,
   placeholder = null,
   onChange = () => null,
   error = false,
@@ -74,6 +75,7 @@ const TextInput = ({
       <input
         className={`text-input ${error && "input-error"}`}
         type={typeState}
+        ref={inputRef}
         placeholder=""
         onChange={(e) => onInputChange(e.target.value)}
         required={required}
