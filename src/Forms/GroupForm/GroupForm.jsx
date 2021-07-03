@@ -153,7 +153,7 @@ const GroupForm = ({
   }, []);
 
   return (
-    <form className="group-form" onSubmit={submitHandler}>
+    <div className="group-form">
       <div className="form-wrapper">
         <div className="dropdown">
           <div className="select-wrapper">
@@ -196,10 +196,10 @@ const GroupForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} type="submit">
+      <Button disabled={!canSubmit} onClick={submitHandler}>
         {t("global.submit")}
       </Button>
-    </form>
+    </div>
   );
 };
 

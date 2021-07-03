@@ -41,22 +41,34 @@ const TopNav = () => {
           <div className="menu">
             <ul className="menu-list">
               <li className="menu-list-item">
-                <NavLink to="/profile" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/profile"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.profile")}
                 </NavLink>
               </li>
               <li className="menu-list-item">
-                <NavLink to="/settings" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/settings"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.settings")}
                 </NavLink>
               </li>
               <li className="menu-list-item">
-                <NavLink to="/about" className="menu-list-item-btn">
+                <NavLink
+                  tabIndex={-1}
+                  to="/about"
+                  className="menu-list-item-btn"
+                >
                   {t("nav.about")}
                 </NavLink>
               </li>
               <li className="menu-list-item" onClick={handleLogout}>
-                <Button className="menu-list-item-btn">
+                <Button tabIndex={-1} className="menu-list-item-btn">
                   {t("nav.logout")}
                 </Button>
               </li>

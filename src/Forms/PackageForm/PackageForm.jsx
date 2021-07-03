@@ -179,7 +179,7 @@ const PackageForm = ({
   }, [onLoad]);
 
   return (
-    <form className="language-package-form" onSubmit={submitHandler}>
+    <div className="language-package-form">
       <div className="form-wrapper">
         <TextInput
           required
@@ -241,10 +241,10 @@ const PackageForm = ({
         />
       </div>
 
-      <Button disabled={!canSubmit} type="submit">
+      <Button disabled={!canSubmit} onClick={submitHandler}>
         {t("global.submit")}
       </Button>
-    </form>
+    </div>
   );
 };
 
