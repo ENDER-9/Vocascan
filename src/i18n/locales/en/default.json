@@ -76,7 +76,9 @@
       "activeLabel": "Active",
       "activeTooltip": "Decides whether vocabulary is included in the query",
       "activateLabel": "Activate",
-      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query"
+      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query",
+      "packageCreateText": "Create new package",
+      "groupCreateText": "Create new group"
     },
     "packageOverview": {
       "unresolved": "Total to learn:",

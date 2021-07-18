@@ -31,6 +31,7 @@ const Switch = ({
             <label className="label-left">{optionLeft}</label>
             {infoLeft && (
               <InfoIcon
+                tabIndex={-1}
                 data-tip={infoLeft}
                 data-for="switch-tooltip"
                 className="info-sign"
@@ -39,7 +40,12 @@ const Switch = ({
           </div>
         )}
         <label className={`switch ${disabled ? "disabled" : ""}`}>
-          <input type="checkbox" checked={checked} onChange={onChange} />
+          <input
+            tabIndex={-1}
+            type="checkbox"
+            checked={checked}
+            onChange={onChange}
+          />
           <span className={`slider slider-${appearance}`}></span>
         </label>
         {switcher && optionRight && (
