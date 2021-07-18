@@ -16,8 +16,9 @@ const NavButton = ({
       activeClassName="nav-button-active"
       className="nav-button-wrapper"
       exact={exact}
+      tabIndex={-1}
     >
-      <button className={`nav-button nav-button-${design}`}>
+      <button tabIndex={-1} className={`nav-button nav-button-${design}`}>
         {icon ? <span className="button-icon">{icon}</span> : null}
         <span className="button-name">{name}</span>
       </button>

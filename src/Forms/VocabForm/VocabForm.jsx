@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,6 +42,7 @@ const VocabForm = ({
   const { t } = useTranslation();
   const { showSnack } = useSnack();
   const dispatch = useDispatch();
+  const focusedInputField = useRef();
 
   const active = useSelector((state) => state.form.vocab.active);
   const activate = useSelector((state) => state.form.vocab.activate);
@@ -196,14 +197,15 @@ const VocabForm = ({
       .catch((e) => {
         showSnack("error", t("components.vocabForm.saveErrorMessage"));
       });
+    focusedInputField.current.focus();
   }, [
-    foreignWord,
     translations,
-    selectedGroup,
-    selectedPackage,
+    foreignWord,
     localActive,
     description,
     defaultData?.id,
+    selectedPackage?.value,
+    selectedGroup?.value,
     localActivate,
     onClear,
     showSnack,
@@ -318,113 +320,118 @@ const VocabForm = ({
   }, [onLoad]);
 
   return (
-    <div className="vocab-form">
-      {title && <h1 className="heading">{title}</h1>}
+    <>
+      <form className="vocab-form" onSubmit={onSubmit}>
+        {title && <h1 className="heading">{title}</h1>}
 
-      <div className="dropdowns">
-        <div className="select-wrapper">
-          <Select
-            required
-            creatable
-            disabled={packageId}
-            createText={"Create new Package"}
-            onCreate={openPackageModal}
-            tabIndex={1}
-            label={t("global.package")}
-            options={packageItems}
-            onChange={(v) => {
-              setSelectedPackage(v);
-            }}
-            value={selectedPackage}
-            noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
-          />
+        <div className="dropdowns">
+          <div className="select-wrapper">
+            <Select
+              required
+              creatable
+              disabled={packageId}
+              createText={t("components.vocabForm.packageCreateText")}
+              onCreate={openPackageModal}
+              tabIndex={-1}
+              label={t("global.package")}
+              options={packageItems}
+              onChange={(v) => {
+                setSelectedPackage(v);
+              }}
+              value={selectedPackage}
+              noOptionsMessage={t("components.vocabForm.noPackagesMessage")}
+            />
+          </div>
+          <div className="select-wrapper">
+            <Select
+              required
+              creatable
+              createText={t("components.vocabForm.groupCreateText")}
+              onCreate={openGroupModal}
+              disabled={!selectedPackage || groupId}
+              tabIndex={-1}
+              label={t("global.group")}
+              options={groupsItems}
+              onChange={(v) => {
+                setSelectedGroup(v);
+              }}
+              value={selectedGroup}
+              noOptionsMessage={t("components.vocabForm.noGroupsMessage")}
+            />
+          </div>
         </div>
-        <div className="select-wrapper">
-          <Select
+        <div className="input-fields">
+          <TextInput
             required
-            creatable
-            createText={"Create new Group"}
-            onCreate={openGroupModal}
-            disabled={!selectedPackage || groupId}
+            inputRef={focusedInputField}
             tabIndex={1}
-            label={t("global.group")}
-            options={groupsItems}
-            onChange={(v) => {
-              setSelectedGroup(v);
+            placeholder={t("global.foreignWord")}
+            onChange={(value) => {
+              setForeignWord(value);
             }}
-            value={selectedGroup}
-            noOptionsMessage={t("components.vocabForm.noGroupsMessage")}
+            value={foreignWord}
+            maxLength={maxTextfieldLength}
           />
-        </div>
-      </div>
-      <div className="input-fields">
-        <TextInput
-          required
-          tabIndex={1}
-          placeholder={t("global.foreignWord")}
-          onChange={(value) => {
-            setForeignWord(value);
-          }}
-          value={foreignWord}
-          maxLength={maxTextfieldLength}
-        />
-        <ArrayTextInput
-          max={maxTranslations}
-          data={translations}
-          placeholder={t("global.translation")}
-          onChange={setTranslations}
-          addText={t("components.vocabForm.addTranslation")}
-          inputProps={{
-            maxLength: maxTextfieldLength,
-            required: true,
-          }}
-        />
-        <Textarea
-          tabIndex={1}
-          placeholder={t("global.description")}
-          onChange={(value) => {
-            setDescription(value);
-          }}
-          value={description}
-          rows={5}
-          maxLength={maxTextareaLength}
-        />
-        <Switch
-          appearance="on-off"
-          optionLeft={t("components.vocabForm.activeLabel")}
-          infoLeft={t("components.vocabForm.activeTooltip")}
-          onChange={onChangeActive}
-          checked={localActive}
-        />
-        {!defaultData && (
+          <ArrayTextInput
+            max={maxTranslations}
+            data={translations}
+            placeholder={t("global.translation")}
+            onChange={setTranslations}
+            addText={t("components.vocabForm.addTranslation")}
+            inputProps={{
+              maxLength: maxTextfieldLength,
+              required: true,
+            }}
+          />
+          <Textarea
+            tabIndex={1}
+            placeholder={t("global.description")}
+            onChange={(value) => {
+              setDescription(value);
+            }}
+            value={description}
+            rows={5}
+            maxLength={maxTextareaLength}
+          />
           <Switch
+            tabIndex={-1}
             appearance="on-off"
-            optionLeft={t("components.vocabForm.activateLabel")}
-            infoLeft={t("components.vocabForm.activateTooltip")}
-            onChange={onChangeActivate}
-            checked={localActivate}
+            optionLeft={t("components.vocabForm.activeLabel")}
+            infoLeft={t("components.vocabForm.activeTooltip")}
+            onChange={onChangeActive}
+            checked={localActive}
           />
-        )}
-      </div>
+          {!defaultData && (
+            <Switch
+              tabIndex={-1}
+              appearance="on-off"
+              optionLeft={t("components.vocabForm.activateLabel")}
+              infoLeft={t("components.vocabForm.activateTooltip")}
+              onChange={onChangeActivate}
+              checked={localActivate}
+            />
+          )}
+        </div>
 
-      <div className="form-submit">
-        <Button
-          block
-          tabIndex={-1}
-          onClick={onSubmit}
-          disabled={
-            !(
-              foreignWord &&
-              translations?.length &&
-              selectedGroup &&
-              selectedPackage &&
-              canSave
-            )
-          }
-        >
-          {t("global.submit")}
-        </Button>
-      </div>
+        <div className="form-submit">
+          <Button
+            block
+            tabIndex={-1}
+            type="submit"
+            disabled={
+              !(
+                foreignWord &&
+                translations?.length &&
+                selectedGroup &&
+                selectedPackage &&
+                canSave
+              )
+            }
+          >
+            {t("global.submit")}
+          </Button>
+        </div>
+      </form>
       <Modal
         title={"Add Package"}
         open={showAddPackage}
@@ -439,7 +446,7 @@ const VocabForm = ({
           onSubmitCallback={groupAdded}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 

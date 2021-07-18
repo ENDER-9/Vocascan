@@ -69,6 +69,28 @@ const ArrayTextInput = ({
     }
   }, [data]);
 
+  useEffect(() => {
+    const listener = (event) => {
+      if (event.keyCode === 40) {
+        event.preventDefault();
+        addArrayData();
+      }
+      if (event.keyCode === 38) {
+        event.preventDefault();
+        if (arrayData.length === 1) {
+          return;
+        }
+        setArrayData((lastItems) =>
+          lastItems.filter((item, i) => i !== arrayData.length - 1)
+        );
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [addArrayData, arrayData.length, removeArrayData]);
+
   return (
     <>
       {arrayData.map((elem, key) => {
@@ -96,6 +118,7 @@ const ArrayTextInput = ({
               tabIndex={-1}
               disabled={!key}
               appearance="red"
+              type="button"
               variant="transparent"
               onClick={() => removeArrayData(elem.id)}
             >
@@ -107,6 +130,7 @@ const ArrayTextInput = ({
       <div className="add-input-wrapper">
         <Button
           tabIndex={-1}
+          type="button"
           variant="transparent"
           onClick={addArrayData}
           disabled={arrayData.length >= max}
