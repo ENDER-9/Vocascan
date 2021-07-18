@@ -6,9 +6,8 @@ const {
   Notification,
   Menu,
   shell,
-  dialog,
 } = require("electron");
-const fs = require("fs");
+
 const isDev = require("electron-is-dev");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
@@ -282,34 +281,6 @@ ipcMain.on("start-update", () => {
 
 ipcMain.on("skip-check", () => {
   skipUpdateCheck();
-});
-
-ipcMain.on("save-file", (event, arg) => {
-  dialog
-    .showSaveDialog({
-      title: "Select where you want to save the file",
-      buttonLabel: "Save",
-      // Restricting the user to only json Files.
-      filters: [
-        {
-          name: "JSON file",
-          extensions: ["json"],
-        },
-      ],
-      properties: [],
-    })
-    .then((file) => {
-      if (!file.canceled) {
-        // Creating and Writing to the json file
-        fs.writeFile(file.filePath.toString(), arg, function (err) {
-          if (err) throw err;
-        });
-        event.sender.send("save-file-reply");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 });
 
 autoUpdater.on("checking-for-update", () => {
