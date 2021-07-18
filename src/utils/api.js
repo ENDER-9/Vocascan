@@ -75,6 +75,11 @@ export const checkQuery = (vocabularyId, answer = false, progress = false) =>
 // Stats
 export const getStats = () => api.get("/user/stats");
 
+// Export
+export const exportGroup = (groupId) => api.get(`/export/group/${groupId}`);
+export const exportPackage = (languagePackageId) =>
+  api.get(`/export/languagePackage/${languagePackageId}`);
+
 // Languages
 export const getLanguages = ({
   code = true,

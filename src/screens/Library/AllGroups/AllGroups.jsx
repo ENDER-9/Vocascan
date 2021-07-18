@@ -18,9 +18,17 @@ import Tooltip from "../../../Components/Tooltip/Tooltip.jsx";
 import GroupForm from "../../../Forms/GroupForm/GroupForm.jsx";
 
 import useSnack from "../../../hooks/useSnack.js";
-import { getGroups, getPackages, deleteGroup } from "../../../utils/api.js";
+import {
+  getGroups,
+  getPackages,
+  deleteGroup,
+  exportGroup,
+} from "../../../utils/api.js";
+import { nodeRequire } from "../../../utils/index.js";
 
 import "./AllGroups.scss";
+
+const { ipcRenderer } = nodeRequire("electron");
 
 const AllGroups = () => {
   const { t } = useTranslation();
@@ -34,6 +42,13 @@ const AllGroups = () => {
   const [showGroupModal, setShowGroupModal] = useState(false);
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
     useState(false);
+  const [showExportConfirmationModal, setShowExportConfirmationModal] =
+    useState(false);
+
+  const openExportGroup = useCallback((pack) => {
+    setCurrentGroup(pack);
+    setShowExportConfirmationModal(true);
+  }, []);
 
   const editGroup = useCallback(
     (grp) => {
@@ -111,6 +126,26 @@ const AllGroups = () => {
     }
   }, [currentGroup, packageId, showSnack, t]);
 
+  const submitExportGroup = useCallback(() => {
+    console.log("exported");
+    if (currentGroup) {
+      exportGroup(currentGroup.id)
+        .then((response) => {
+          ipcRenderer.send("save-file", JSON.stringify(response.data));
+          ipcRenderer.on("save-file-reply", (event, result) => {
+            setShowExportConfirmationModal(false);
+            showSnack("success", "Exported group successfully");
+          });
+          return () => {
+            ipcRenderer.removeListener("save-file-reply");
+          };
+        })
+        .catch((e) => {
+          showSnack("error", "Error exporting group");
+        });
+    }
+  }, [currentGroup, showSnack]);
+
   const columns = useMemo(
     () => [
       {
@@ -161,6 +196,12 @@ const AllGroups = () => {
         accessor: "action",
         Cell: ({ row }) => (
           <div className="action-col">
+            <Button
+              appearance="primary"
+              onClick={() => openExportGroup(row.original)}
+            >
+              Export
+            </Button>
             <Button variant="link" onClick={() => editGroup(row.original)}>
               <EditOutlinedIcon />
             </Button>
@@ -175,7 +216,7 @@ const AllGroups = () => {
         ),
       },
     ],
-    [editGroup, onDeleteGroup, packageId, t]
+    [editGroup, onDeleteGroup, openExportGroup, packageId, t]
   );
 
   useEffect(() => {
@@ -221,6 +262,17 @@ const AllGroups = () => {
           onSubmitCallback={groupSubmitted}
         />
       </Modal>
+
+      <ConfirmDialog
+        title={"Export group"}
+        description={t("screens.allPackages.deleteDescription", {
+          name: currentPackage?.name,
+        })}
+        submitText={"Export"}
+        onSubmit={submitExportGroup}
+        onClose={() => setShowExportConfirmationModal(false)}
+        show={showExportConfirmationModal}
+      />
 
       {currentGroup && (
         <ConfirmDialog
