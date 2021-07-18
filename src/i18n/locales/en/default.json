@@ -1,337 +1,341 @@
 {
-  "global": {
-    "name": "Name",
-    "noOptionMessage": "No options",
-    "continue": "Continue",
-    "submit": "Submit",
-    "abort": "Abort",
-    "close": "Close",
-    "delete": "Delete",
-    "save": "Save",
-    "vocascan": "Vocascan",
-    "username": "Username",
-    "email": "Email",
-    "password": "Password",
-    "passwordRepeat": "Repeat password",
-    "server": "Server",
-    "add": "Add",
-    "none": "None",
-    "group": "Group",
-    "groups": "Groups",
-    "description": "Description",
-    "foreignWord": "Foreign word",
-    "translation": "Translation",
-    "LogIn": "Log in",
-    "library": "Library",
-    "package": "Package",
-    "packages": "Packages",
-    "vocabs": "Vocabs",
-    "signIn": "Sign in",
-    "signUp": "Sign up",
-    "serverNotResponding": "The server is not responding",
-    "successMessage": "Success",
-    "fetchError": "Something went wrong, please try again later",
-    "paginationPage": "Page {{page}} of {{pageLength}}",
-    "paginationShow": "Show {{size}}",
-    "learn": "Learn",
-    "activate": "Activate",
-    "random": "Random",
-    "wrong": "Wrong",
-    "correct": "Correct",
-    "total": "Total",
-    "query": "Query",
-    "finish": "Finish",
-    "back": "Back",
-    "comingSoon": "Coming soon...",
-    "skip": "Skip"
-  },
-  "components": {
-    "groupForm": {
-      "languagePackage": "Package",
-      "activeLabel": "Active",
-      "saveGroupSuccessMessage": "New group added",
-      "savGroupFailMessage": "Could not add group",
-      "modifyGroupSuccessMessage": "Group saved",
-      "modifyGroupFailMessage": "Could not save Group"
-    },
-    "packageForm": {
-      "foreignLanguage": "Foreign language",
-      "translatedLanguage": "Translated language",
-      "vocabsPerDay": "Vocabs per day",
-      "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs",
-      "savePackageSuccessMessage": "New package added",
-      "savePackageFailMessage": "Could not add package",
-      "modifyPackageSuccessMessage": "Package saved",
-      "modifyPackageFailedMessage": "Could not save package"
-    },
-    "vocabForm": {
-      "noPackagesMessage": "No packages found",
-      "noGroupsMessage": "No groups found",
-      "addTranslation": "Add translation",
-      "saveSuccessMessage": "New vocabulary added",
-      "saveErrorMessage": "New vocabulary could not be added",
-      "modifySuccessMessage": "Vocabulary saved",
-      "modifyErrorMessage": "Vocabulary could not be saved",
-      "saveGroupSuccessMessage": "New group added",
-      "activeLabel": "Active",
-      "activeTooltip": "Decides whether vocabulary is included in the query",
-      "activateLabel": "Activate",
-      "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query",
-      "packageCreateText": "Create new package",
-      "groupCreateText": "Create new group"
-    },
-    "packageOverview": {
-      "unresolved": "Total to learn:",
-      "unactivated": "Not activated:",
-      "today": "Today:"
-    },
-    "validServerIndicator": {
-      "validServer": "✓ valid server (v{{version}})",
-      "serverNotVocascanServer": "✗ server isn't a vocascan server",
-      "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
-      "serverNotResponding": "✗ server is not responding"
-    },
-    "languageSelector": {
-      "label": "Language"
-    }
-  },
-  "screens": {
-    "allPackages": {
-      "title": "All packages",
-      "packageName": "Package",
-      "foreignLanguage": "Foreign language",
-      "translatedLanguage": "Translated language",
-      "vocabsPerDay": "Vocabs/Day",
-      "rightWords": "Right words",
-      "deleteTitle": "Delete Package",
-      "deleteDescription": "Are you sure you want to delete the package {{name}}?",
-      "deleteSuccessMessage": "Package deleted",
-      "deleteFailMessage": "Package could not be deleted",
-      "editPackage": "Edit Package",
-      "addPackage": "Add Package"
-    },
-    "allGroups": {
-      "title": "All groups",
-      "groupName": "Group",
-      "groupDescription": "Description",
-      "active": "Active",
-      "deleteTitle": "Delete Group",
-      "deleteDescription": "Are you sure you want to delete the group {{name}}?",
-      "deleteSuccessMessage": "Group deleted",
-      "deleteFailMessage": "Group could not be deleted",
-      "editGroup": "Edit Group",
-      "addGroup": "Add Group"
-    },
-    "allVocabs": {
-      "title": "All vocabulary",
-      "vocabel": "Vocabel",
-      "translations": "Translations",
-      "deleteTitle": "Delete Vocabulary",
-      "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",
-      "deleteSuccessMessage": "Vocabulary deleted",
-      "deleteFailMessage": "Vocabulary could not be deleted",
-      "editVocab": "Edit Vocabular",
-      "addVocab": "Add Vocabular"
-    },
-    "addVocab": {
-      "title": "Add vocabulary"
-    },
-    "dashboard": {
-      "empty": "No packages were found"
-    },
-    "direction": {
-      "title": "Please choose your direction"
-    },
-    "endScreen": {
-      "congratulations": [
-        "You have to practice that again",
-        "It will be better next time",
-        "Stay tuned",
-        "Congratulation",
-        "You are amazing"
-      ],
-      "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
-      "dashboard": "Back to the dashboard"
-    },
-    "profile": {
-      "stats": {
-        "stats": "Stats",
+    "global": {
+        "name": "Name",
+        "noOptionMessage": "No options",
+        "continue": "Continue",
+        "submit": "Submit",
+        "abort": "Abort",
+        "close": "Close",
+        "delete": "Delete",
+        "save": "Save",
+        "vocascan": "Vocascan",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "passwordRepeat": "Repeat password",
+        "server": "Server",
+        "add": "Add",
+        "none": "None",
+        "group": "Group",
+        "groups": "Groups",
+        "description": "Description",
+        "foreignWord": "Foreign word",
+        "translation": "Translation",
+        "LogIn": "Log in",
+        "library": "Library",
+        "package": "Package",
+        "packages": "Packages",
+        "vocabs": "Vocabs",
+        "signIn": "Sign in",
+        "signUp": "Sign up",
+        "serverNotResponding": "The server is not responding",
+        "successMessage": "Success",
+        "fetchError": "Something went wrong, please try again later",
+        "paginationPage": "Page {{page}} of {{pageLength}}",
+        "paginationShow": "Show {{size}}",
+        "learn": "Learn",
+        "activate": "Activate",
+        "random": "Random",
+        "wrong": "Wrong",
+        "correct": "Correct",
         "total": "Total",
-        "active": "Active",
-        "inactive": "Inactive"
-      },
-      "accountSettings": {
-        "title": "Account settings",
-        "password": {
-          "title": "Change password",
-          "description": "Change old password if you forgot it"
+        "query": "Query",
+        "finish": "Finish",
+        "back": "Back",
+        "comingSoon": "Coming soon...",
+        "skip": "Skip"
+    },
+    "components": {
+        "groupForm": {
+            "languagePackage": "Package",
+            "activeLabel": "Active",
+            "saveGroupSuccessMessage": "New group added",
+            "savGroupFailMessage": "Could not add group",
+            "modifyGroupSuccessMessage": "Group saved",
+            "modifyGroupFailMessage": "Could not save Group"
         },
-        "email": {
-          "title": "Change email",
-          "description": "Be careful to use a valid email"
+        "packageForm": {
+            "foreignLanguage": "Foreign language",
+            "translatedLanguage": "Translated language",
+            "vocabsPerDay": "Vocabs per day",
+            "correctTranslationsGoal": "Correct translations to have successful vocabulary pairs",
+            "savePackageSuccessMessage": "New package added",
+            "savePackageFailMessage": "Could not add package",
+            "modifyPackageSuccessMessage": "Package saved",
+            "modifyPackageFailedMessage": "Could not save package"
         },
-        "delete": {
-          "title": "Delete account",
-          "description": "Once you deleted your account it is gone forever"
+        "vocabForm": {
+            "noPackagesMessage": "No packages found",
+            "noGroupsMessage": "No groups found",
+            "addTranslation": "Add translation",
+            "saveSuccessMessage": "New vocabulary added",
+            "saveErrorMessage": "New vocabulary could not be added",
+            "modifySuccessMessage": "Vocabulary saved",
+            "modifyErrorMessage": "Vocabulary could not be saved",
+            "saveGroupSuccessMessage": "New group added",
+            "activeLabel": "Active",
+            "activeTooltip": "Decides whether vocabulary is included in the query",
+            "activateLabel": "Activate",
+            "activateTooltip": "Decides whether the vocabulary has to be activated separately in order to be able to use it in the query",
+            "packageCreateText": "Create new package",
+            "groupCreateText": "Create new group"
+        },
+        "packageOverview": {
+            "unresolved": "Total to learn:",
+            "unactivated": "Not activated:",
+            "today": "Today:"
+        },
+        "validServerIndicator": {
+            "validServer": "✓ valid server (v{{version}})",
+            "serverNotVocascanServer": "✗ server isn't a vocascan server",
+            "versionToOld": "✗ server version v{{version}} is to old. Min required is v{{minVersion}}",
+            "serverNotResponding": "✗ server is not responding"
+        },
+        "languageSelector": {
+            "label": "Language"
         }
-      }
     },
-    "selectionScreen": {
-      "title": "Login",
-      "heading": "Select your option",
-      "vocascanCloud": {
-        "heading": "Vocascan cloud",
-        "pro": [
-          "No need of a server",
-          "sync every device"
-        ],
-        "contra": [
-          "Your data is stored on vocascan servers",
-          "Not available for now"
-        ],
-        "button": "Start for free"
-      },
-      "vocascanServer": {
-        "heading": "Vocascan server",
-        "pro": [
-          "sync every device",
-          "Use your own Server",
-          "Full control over the settings"
-        ],
-        "contra": [
-          "You need a own server",
-          "You need some time to setup a server"
-        ],
-        "button": "Start for free"
-      }
+    "screens": {
+        "allPackages": {
+            "title": "All packages",
+            "packageName": "Package",
+            "foreignLanguage": "Foreign language",
+            "translatedLanguage": "Translated language",
+            "vocabsPerDay": "Vocabs/Day",
+            "rightWords": "Right words",
+            "deleteTitle": "Delete Package",
+            "deleteDescription": "Are you sure you want to delete the package {{name}}?",
+            "deleteSuccessMessage": "Package deleted",
+            "deleteFailMessage": "Package could not be deleted",
+            "exportSuccessMessage": "Exported package successfully",
+            "exportFailMessage": "Error exporting package",
+            "editPackage": "Edit Package",
+            "addPackage": "Add Package"
+        },
+        "allGroups": {
+            "title": "All groups",
+            "groupName": "Group",
+            "groupDescription": "Description",
+            "active": "Active",
+            "deleteTitle": "Delete Group",
+            "deleteDescription": "Are you sure you want to delete the group {{name}}?",
+            "deleteSuccessMessage": "Group deleted",
+            "deleteFailMessage": "Group could not be deleted",
+            "exportSuccessMessage": "Exported group successfully",
+            "exportFailMessage": "Error exporting group",
+            "editGroup": "Edit Group",
+            "addGroup": "Add Group"
+        },
+        "allVocabs": {
+            "title": "All vocabulary",
+            "vocabel": "Vocabel",
+            "translations": "Translations",
+            "deleteTitle": "Delete Vocabulary",
+            "deleteDescription": "Are you sure you want to delete the vocabulary {{name}}?",
+            "deleteSuccessMessage": "Vocabulary deleted",
+            "deleteFailMessage": "Vocabulary could not be deleted",
+            "editVocab": "Edit Vocabular",
+            "addVocab": "Add Vocabular"
+        },
+        "addVocab": {
+            "title": "Add vocabulary"
+        },
+        "dashboard": {
+            "empty": "No packages were found"
+        },
+        "direction": {
+            "title": "Please choose your direction"
+        },
+        "endScreen": {
+            "congratulations": [
+                "You have to practice that again",
+                "It will be better next time",
+                "Stay tuned",
+                "Congratulation",
+                "You are amazing"
+            ],
+            "percentageText": "you solved {{percentage}}% of the vocabulary correctly",
+            "dashboard": "Back to the dashboard"
+        },
+        "profile": {
+            "stats": {
+                "stats": "Stats",
+                "total": "Total",
+                "active": "Active",
+                "inactive": "Inactive"
+            },
+            "accountSettings": {
+                "title": "Account settings",
+                "password": {
+                    "title": "Change password",
+                    "description": "Change old password if you forgot it"
+                },
+                "email": {
+                    "title": "Change email",
+                    "description": "Be careful to use a valid email"
+                },
+                "delete": {
+                    "title": "Delete account",
+                    "description": "Once you deleted your account it is gone forever"
+                }
+            }
+        },
+        "selectionScreen": {
+            "title": "Login",
+            "heading": "Select your option",
+            "vocascanCloud": {
+                "heading": "Vocascan cloud",
+                "pro": [
+                    "No need of a server",
+                    "sync every device"
+                ],
+                "contra": [
+                    "Your data is stored on vocascan servers",
+                    "Not available for now"
+                ],
+                "button": "Start for free"
+            },
+            "vocascanServer": {
+                "heading": "Vocascan server",
+                "pro": [
+                    "sync every device",
+                    "Use your own Server",
+                    "Full control over the settings"
+                ],
+                "contra": [
+                    "You need a own server",
+                    "You need some time to setup a server"
+                ],
+                "button": "Start for free"
+            }
+        },
+        "guide": {
+            "title": "Guide",
+            "start": {
+                "slogan": "A highly configurable vocabulary trainer"
+            },
+            "packageDescription": {
+                "bulletPoints": [
+                    "The main piece of this trainer are packages, where you can store all your vocabs from a language.",
+                    "Packages can be created over package select box or in the library over the + icon, as you can see on the left images"
+                ],
+                "endText": "That said we will create your first vocabulary package."
+            },
+            "groupDescription": {
+                "bulletPoints": [
+                    "Every package is divided into groups, where you can store your vocabs more organized.",
+                    "Groups can be created over a group selection box or the library like the packages.",
+                    "Every group has a active trigger where you can decide whether the included vocabs get queried or not."
+                ],
+                "endText": "Next we will create a group."
+            },
+            "vocabDescription": {
+                "heading": "Now we come to the most important part of Vocascan - the vocab cards -",
+                "bulletPoints": [
+                    "You can create vocab cards while deciding which package and group they belong to.",
+                    "Every vocab has a specific active toggle also where you can decide over the query status more precisely.",
+                    "The 'Activate' toggle will decide if you have to activate your vocabs first before the first query or if you directly start learning with them."
+                ],
+                "endText": "In the next step we will create a vocab card"
+            },
+            "end": {
+                "heading": "Now you are set up",
+                "description": "Have fun trying out Vocascan"
+            }
+        },
+        "firstStartup": {
+            "title": "Create your first vocabulary package",
+            "savePackageSuccessMessage": "New package added",
+            "saveGroupSuccessMessage": "New group added",
+            "saveVocabSuccessMessage": "New vocab added"
+        },
+        "login": {
+            "title": "Login",
+            "wrongCredentials": "Your email or password is wrong",
+            "dontHaveAccount": "Don't have an account?"
+        },
+        "register": {
+            "title": "Register",
+            "usernameInUse": "The username is already used",
+            "emailInUse": "The email is already used",
+            "passwordsDontMatch": "The passwords are not the same",
+            "alreadyHaveAccount": "Already have an account?"
+        },
+        "settings": {
+            "title": "Settings",
+            "menu": {
+                "label": "Menu style",
+                "optionLeft": "Default",
+                "optionRight": "Fancy"
+            },
+            "guide": {
+                "title": "Forgot how to use Vocascan? Just reopen the guide",
+                "button": "Reopen Guide"
+            },
+            "desktopVersion": "Desktop version",
+            "serverVersion": "Server version"
+        },
+        "progress": {
+            "title": "Progress"
+        },
+        "custom": {
+            "title": "Custom learning"
+        },
+        "about": {
+            "title": "About vocascan"
+        }
     },
-    "guide": {
-      "title": "Guide",
-      "start": {
-        "slogan": "A highly configurable vocabulary trainer"
-      },
-      "packageDescription": {
-        "bulletPoints": [
-          "The main piece of this trainer are packages, where you can store all your vocabs from a language.",
-          "Packages can be created over package select box or in the library over the + icon, as you can see on the left images"
-        ],
-        "endText": "That said we will create your first vocabulary package."
-      },
-      "groupDescription": {
-        "bulletPoints": [
-          "Every package is divided into groups, where you can store your vocabs more organized.",
-          "Groups can be created over a group selection box or the library like the packages.",
-          "Every group has a active trigger where you can decide whether the included vocabs get queried or not."
-        ],
-        "endText": "Next we will create a group."
-      },
-      "vocabDescription": {
-        "heading": "Now we come to the most important part of Vocascan - the vocab cards -",
-        "bulletPoints": [
-          "You can create vocab cards while deciding which package and group they belong to.",
-          "Every vocab has a specific active toggle also where you can decide over the query status more precisely.",
-          "The 'Activate' toggle will decide if you have to activate your vocabs first before the first query or if you directly start learning with them."
-        ],
-        "endText": "In the next step we will create a vocab card"
-      },
-      "end": {
-        "heading": "Now you are set up",
-        "description": "Have fun trying out Vocascan"
-      }
+    "nav": {
+        "newVocab": "New Vocab",
+        "learn": "Learn",
+        "progress": "Progress",
+        "allVocabulary": "Library",
+        "custom": "Custom",
+        "settings": "Settings",
+        "about": "About",
+        "profile": "Profile",
+        "logout": "Logout"
     },
-    "firstStartup": {
-      "title": "Create your first vocabulary package",
-      "savePackageSuccessMessage": "New package added",
-      "saveGroupSuccessMessage": "New group added",
-      "saveVocabSuccessMessage": "New vocab added"
+    "languages": {
+        "German": "German",
+        "English": "English",
+        "Spanish": "Spanish",
+        "Portuguese": "Portuguese",
+        "Turkish": "Turkish",
+        "Russian": "Russian",
+        "French": "French"
     },
-    "login": {
-      "title": "Login",
-      "wrongCredentials": "Your email or password is wrong",
-      "dontHaveAccount": "Don't have an account?"
+    "modal": {
+        "serverNotSupported": {
+            "title": "Server not supported",
+            "serverNotVocascanServer": "This server does not look like a vocascan server.",
+            "versionToOld": "The vocascan server has the version v{{version}} but this is no longer supported by the client, because at least v{{minVersion}} is required. Please contact the server administrator to update the server version."
+        },
+        "selectLanguage": {
+            "title": "Select app language"
+        },
+        "changePassword": {
+            "heading": "Change password",
+            "oldPassword": "Old password",
+            "newPassword": "New password",
+            "repeatNewPassword": "Repeat new password",
+            "oldPasswordError": "Old password is invalid",
+            "newPasswordError": "New passwords do not match",
+            "change": "Change"
+        },
+        "changeEmail": {
+            "heading": "Change email"
+        },
+        "deleteAccount": {
+            "heading": "Delete account",
+            "input": "Type in your username to confirm deletion"
+        }
     },
-    "register": {
-      "title": "Register",
-      "usernameInUse": "The username is already used",
-      "emailInUse": "The email is already used",
-      "passwordsDontMatch": "The passwords are not the same",
-      "alreadyHaveAccount": "Already have an account?"
-    },
-    "settings": {
-      "title": "Settings",
-      "menu": {
-        "label": "Menu style",
-        "optionLeft": "Default",
-        "optionRight": "Fancy"
-      },
-      "guide": {
-        "title": "Forgot how to use Vocascan? Just reopen the guide",
-        "button": "Reopen Guide"
-      },
-      "desktopVersion": "Desktop version",
-      "serverVersion": "Server version"
-    },
-    "progress": {
-      "title": "Progress"
-    },
-    "custom": {
-      "title": "Custom learning"
-    },
-    "about": {
-      "title": "About vocascan"
+    "contributors": {
+        "desktop": "Vocascan desktop contributors",
+        "server": "Vocascan server contributors",
+        "translator": "Translators",
+        "miscellaneous": "Miscellaneous contributors",
+        "dependencies": "External dependencies"
     }
-  },
-  "nav": {
-    "newVocab": "New Vocab",
-    "learn": "Learn",
-    "progress": "Progress",
-    "allVocabulary": "Library",
-    "custom": "Custom",
-    "settings": "Settings",
-    "about": "About",
-    "profile": "Profile",
-    "logout": "Logout"
-  },
-  "languages": {
-    "German": "German",
-    "English": "English",
-    "Spanish": "Spanish",
-    "Portuguese": "Portuguese",
-    "Turkish": "Turkish",
-    "Russian": "Russian",
-    "French": "French"
-  },
-  "modal": {
-    "serverNotSupported": {
-      "title": "Server not supported",
-      "serverNotVocascanServer": "This server does not look like a vocascan server.",
-      "versionToOld": "The vocascan server has the version v{{version}} but this is no longer supported by the client, because at least v{{minVersion}} is required. Please contact the server administrator to update the server version."
-    },
-    "selectLanguage": {
-      "title": "Select app language"
-    },
-    "changePassword": {
-      "heading": "Change password",
-      "oldPassword": "Old password",
-      "newPassword": "New password",
-      "repeatNewPassword": "Repeat new password",
-      "oldPasswordError": "Old password is invalid",
-      "newPasswordError": "New passwords do not match",
-      "change": "Change"
-    },
-    "changeEmail": {
-      "heading": "Change email"
-    },
-    "deleteAccount": {
-      "heading": "Delete account",
-      "input": "Type in your username to confirm deletion"
-    }
-  },
-  "contributors": {
-    "desktop": "Vocascan desktop contributors",
-    "server": "Vocascan server contributors",
-    "translator": "Translators",
-    "miscellaneous": "Miscellaneous contributors",
-    "dependencies": "External dependencies"
-  }
 }

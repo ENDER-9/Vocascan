@@ -131,20 +131,23 @@ const AllGroups = () => {
     if (currentGroup) {
       exportGroup(currentGroup.id)
         .then((response) => {
-          ipcRenderer.send("save-file", JSON.stringify(response.data));
+          ipcRenderer.send("save-file", {
+            title: response.data.name,
+            text: JSON.stringify(response.data),
+          });
           ipcRenderer.on("save-file-reply", (event, result) => {
             setShowExportConfirmationModal(false);
-            showSnack("success", "Exported group successfully");
+            showSnack("success", t("screens.allGroups.exportFailMessage"));
           });
           return () => {
             ipcRenderer.removeListener("save-file-reply");
           };
         })
         .catch((e) => {
-          showSnack("error", "Error exporting group");
+          showSnack("error", t("screens.allGroups.exportFailMessage"));
         });
     }
-  }, [currentGroup, showSnack]);
+  }, [currentGroup, showSnack, t]);
 
   const columns = useMemo(
     () => [

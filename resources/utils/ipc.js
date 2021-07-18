@@ -30,6 +30,7 @@ const RegisterIpcHandler = () => {
       .showSaveDialog({
         title: "Select where you want to save the file",
         buttonLabel: "Save",
+        defaultPath: `./${arg.title}`,
         // Restricting the user to only json Files.
         filters: [
           {
@@ -42,7 +43,7 @@ const RegisterIpcHandler = () => {
       .then((file) => {
         if (!file.canceled) {
           // Creating and Writing to the json file
-          fs.writeFile(file.filePath.toString(), arg, function (err) {
+          fs.writeFile(file.filePath.toString(), arg.text, function (err) {
             if (err) throw err;
           });
           event.sender.send("save-file-reply");

@@ -89,20 +89,23 @@ const AllPackages = () => {
     if (currentPackage) {
       exportPackage(currentPackage.id)
         .then((response) => {
-          ipcRenderer.send("save-file", JSON.stringify(response.data));
+          ipcRenderer.send("save-file", {
+            title: response.data.name,
+            text: JSON.stringify(response.data),
+          });
           ipcRenderer.on("save-file-reply", (event, result) => {
             setShowExportConfirmationModal(false);
-            showSnack("success", "Exported package successfully");
+            showSnack("success", t("screens.allPackages.exportSuccessMessage"));
           });
           return () => {
             ipcRenderer.removeListener("save-file-reply");
           };
         })
         .catch((e) => {
-          showSnack("error", "Error exporting package");
+          showSnack("error", t("screens.allPackages.exportFailMessage"));
         });
     }
-  }, [currentPackage, showSnack]);
+  }, [currentPackage, showSnack, t]);
 
   const columns = useMemo(
     () => [
